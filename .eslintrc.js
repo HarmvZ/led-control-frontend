@@ -47,6 +47,10 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'prefer-promise-reject-errors': 'off',
 
+    //custom rules
+    'semi': ['error', 'always'],
+    'comma-dangle': ['warn', 'always-multiline'],
+
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow debugger during development only
