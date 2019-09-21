@@ -9,8 +9,8 @@
 </style>
 
 <script>
-import ShowClock from '../components/ShowClock';
-import ShowAnimation from '../components/ShowAnimation';
+import ShowClock from 'components/ShowClock';
+import ShowAnimation from 'components/ShowAnimation';
 
 export default {
   name: 'Animation',

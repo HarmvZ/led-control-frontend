@@ -22,11 +22,9 @@
 </style>
 
 <script>
-import request from '../mixins/request';
 
 export default {
   name: 'ShowAnimation',
-  mixins: [request],
   data () {
     return {
       waitMs: 20,

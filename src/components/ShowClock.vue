@@ -12,12 +12,10 @@
 </style>
 
 <script>
-import request from '../mixins/request';
-import getRGBColorObject from '../utils/getRGBColorObject';
+import getRGBColorObject from 'src/utils/getRGBColorObject';
 
 export default {
   name: 'ShowClock',
-  mixins: [request],
   data () {
     return {
       fg_color: null,

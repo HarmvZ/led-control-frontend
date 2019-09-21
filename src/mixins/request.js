@@ -1,14 +1,9 @@
 export default {
-  data () {
-    return {
-      baseURL: process.env.API_BASE_URL,
-    };
-  },
   methods: {
     async request (options) {
       try {
         const response = await this.$axios({
-          baseURL: this.baseURL,
+          baseURL: process.env.API_BASE_URL,
           ...options,
         });
         return response;

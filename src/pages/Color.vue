@@ -8,7 +8,7 @@
 </style>
 
 <script>
-import ChangeColor from '../components/ChangeColor';
+import ChangeColor from 'components/ChangeColor';
 
 export default {
   name: 'Color',
