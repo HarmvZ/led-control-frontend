@@ -83,10 +83,10 @@ module.exports = function (ctx) {
       },
       env: ctx.dev
         ? {
-          API_BASE_URL: 'http://192.168.100.112/',
+          API_BASE_URL: JSON.stringify('http://localhost/'),
         }
         : {
-          API_BASE_URL: 'http://192.168.100.112/',
+          API_BASE_URL: JSON.stringify('http://192.168.100.112/'),
         },
     },
 
