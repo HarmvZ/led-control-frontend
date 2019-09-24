@@ -1,11 +1,24 @@
 <template>
-  <q-list bordered class="rounded-borders">
-    <alarm-detail
-      v-for="alarm in alarms"
-      :key="alarm.pk"
-      :alarm="alarm"
-    />
-  </q-list>
+  <q-pull-to-refresh @refresh="refresh">
+    <q-list bordered separator class="rounded-borders">
+      <alarm-detail
+        v-for="alarm in alarms"
+        :key="alarm.pk"
+        v-bind="alarm"
+        :updateAlarm="updateAlarm"
+        :removeAlarm="removeAlarm"
+      />
+    </q-list>
+      <q-btn
+        @click="addAlarm()"
+        round
+        color="primary"
+        icon="alarm_add"
+        size="lg"
+        class="q-mr-md q-mb-md fixed-bottom-right"
+      >
+      </q-btn>
+  </q-pull-to-refresh>
 </template>
 
 <style>
@@ -23,14 +36,53 @@ export default {
     };
   },
   methods: {
-    syncAlarms () {
+    async syncAlarms () {
       const url = '/api/alarms/';
-      const response = this.request({
+      const response = await this.request({
         method: 'GET',
         url,
         responseType: 'json',
       });
       this.alarms = response;
+    },
+    async removeAlarm (pk) {
+      const url = `/api/alarms/${pk}/`;
+      await this.request({
+        method: 'DELETE',
+        url,
+        responseType: 'json',
+      });
+      this.alarms = this.alarms.filter(alarm => alarm.pk !== pk);
+    },
+    async updateAlarm (pk, changes) {
+      const url = `/api/alarms/${pk}/`;
+      const data = changes;
+      await this.request({
+        method: 'PATCH',
+        url,
+        data,
+        responseType: 'json',
+      });
+      this.syncAlarms();
+    },
+    async addAlarm () {
+      const url = '/api/alarms/';
+      const data = {
+        enabled: false,
+        minute: '00',
+        hour: '08',
+        day_of_week: '0,1,2,3,4,5,6',
+      };
+      await this.request({
+        method: 'POST',
+        url,
+        data,
+        responseType: 'json',
+      });
+      this.syncAlarms();
+    },
+    refresh (done) {
+      this.syncAlarms().then(() => done());
     },
   },
   mounted () {

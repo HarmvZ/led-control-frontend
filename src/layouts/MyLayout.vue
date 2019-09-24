@@ -1,5 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <q-ajax-bar
+      position="bottom"
+      color="accent"
+      size="2px"
+    />
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -13,10 +18,10 @@
         </q-btn>
 
         <q-toolbar-title>
-          LED Control
+          L
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <connection-status />
       </q-toolbar>
     </q-header>
 
@@ -65,6 +70,7 @@
 
 <script>
 import { openURL } from 'quasar';
+import ConnectionStatus from 'components/ConnectionStatus';
 
 export default {
   name: 'MyLayout',
@@ -76,6 +82,7 @@ export default {
   methods: {
     openURL,
   },
+  components: { ConnectionStatus },
 };
 </script>
 

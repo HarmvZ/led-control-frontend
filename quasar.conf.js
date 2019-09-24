@@ -49,10 +49,25 @@ module.exports = function (ctx) {
         'QColor',
         'QSlider',
         'QOptionGroup',
+        'QToggle',
+        'QTime',
+        'QDialog',
+        'QBtnToggle',
+        'QPopupEdit',
+        'QInput',
+        'QCheckbox',
+        'QCard',
+        'QCardSection',
+        'QCardActions',
+        'QAvatar',
+        'QPullToRefresh',
+        'QAjaxBar',
+        'QChip',
       ],
 
       directives: [
         'Ripple',
+        'ClosePopup',
       ],
 
       // Quasar plugins
@@ -83,7 +98,7 @@ module.exports = function (ctx) {
       },
       env: ctx.dev
         ? {
-          API_BASE_URL: JSON.stringify('http://localhost/'),
+          API_BASE_URL: JSON.stringify('http://localhost:888/'),
         }
         : {
           API_BASE_URL: JSON.stringify('http://192.168.100.112/'),
@@ -92,7 +107,7 @@ module.exports = function (ctx) {
 
     devServer: {
       // https: true,
-      port: 8081,
+      port: 8088,
       open: true, // opens browser window automatically
     },
 

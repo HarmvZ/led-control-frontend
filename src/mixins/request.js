@@ -6,7 +6,7 @@ export default {
           baseURL: process.env.API_BASE_URL,
           ...options,
         });
-        return response;
+        return response.data;
       } catch (error) {
         this.$q.notify({
           message: error.toString(),

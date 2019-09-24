@@ -3,7 +3,10 @@
     <q-color v-model="fg_color" format-model="rgb" inline no-header></q-color>
     <q-color v-model="bg_color" format-model="rgb" inline no-header></q-color>
     <q-btn-group>
-      <q-btn color="primary" label="Show Clock" @click="showClock()" />
+      <q-btn color="primary" label="Show Clock" @click="showClock()">
+        <q-icon name="query_builder" />
+        Show Clock
+      </q-btn>
     </q-btn-group>
   </div>
 </template>
