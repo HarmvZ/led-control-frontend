@@ -1,6 +1,6 @@
 <template>
-  <q-item>
-    <q-item-section class="column items-center" style="min-width:230px;">
+  <q-item class="col-12">
+    <q-item-section class="column items-center">
       <q-item-label>
         <q-icon
           size="xl"
@@ -8,12 +8,12 @@
       </q-item-label>
       <q-item-label lines="1">
         <span class="text-weight-medium text-h5">{{ name }}</span>
-        <q-popup-edit v-model="name">
+        <q-popup-edit v-if="editable" v-model="name">
           <q-input class="text-weight-medium text-h5" v-model="name" dense autofocus />
         </q-popup-edit>
       </q-item-label>
       <q-item-label
-        @click="timeDialog = true"
+        @click="timeDialog = editable"
         lines="1"
         class="text-weight-bold text-primary text-uppercase"
       >
@@ -24,8 +24,10 @@
           v-model="alarm_enabled"
           icon="alarm"
           size="xl"
+          :disable="!editable"
         />
         <q-btn
+          v-if="editable"
           @click="confirmDelete = true"
           color="negative"
           flat
@@ -40,11 +42,11 @@
         <q-btn
           v-for="dow in dow_map"
           :key="dow.value"
-          clickable
+          :clickable="editable"
           @click="toggleDow(dow.value)"
           :flat="!day_of_week.split(',').includes(dow.value)"
           :color="day_of_week.split(',').includes(dow.value) ? 'primary' : 'gray-6'"
-          size="sm"
+          size="md"
           dense
         >
           {{ dow.label }}
@@ -89,6 +91,10 @@ export default {
     day_of_week: String,
     updateAlarm: Function,
     removeAlarm: Function,
+    editable: {
+      type: Boolean,
+      default: true,
+    },
   },
   data () {
     return {
@@ -131,6 +137,9 @@ export default {
       this.updateAlarm(this.pk, { hour, minute });
     },
     toggleDow (value) {
+      if (!this.editable) {
+        return;
+      }
       let dow = this.day_of_week.split(',');
       if (dow.includes(value)) {
         dow = dow.filter((dow) => dow !== value);
