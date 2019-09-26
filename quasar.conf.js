@@ -63,6 +63,7 @@ module.exports = function (ctx) {
         'QPullToRefresh',
         'QAjaxBar',
         'QChip',
+        'QFooter',
       ],
 
       directives: [
@@ -107,8 +108,8 @@ module.exports = function (ctx) {
 
     devServer: {
       // https: true,
-      port: 8088,
-      open: true, // opens browser window automatically
+      port: 80,
+      open: false, // opens browser window automatically
     },
 
     // animations: 'all', // --- includes all animations

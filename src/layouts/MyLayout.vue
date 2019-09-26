@@ -3,7 +3,7 @@
     <q-ajax-bar
       position="bottom"
       color="accent"
-      size="2px"
+      size="5px"
     />
     <q-header elevated>
       <q-toolbar>
@@ -32,6 +32,15 @@
       content-class="bg-grey-2"
     >
       <q-list>
+        <q-item clickable v-ripple to="/">
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Index</q-item-label>
+            <q-item-label caption>Homepage</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item clickable v-ripple to="/alarm">
           <q-item-section avatar>
             <q-icon name="alarm" />
@@ -65,24 +74,42 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer elevated class="bg-white flex column items-center">
+      <div class="col">
+        <q-btn
+          flat
+          round
+          color="primary"
+          :icon="showPreview ? 'expand_more' : 'expand_less'"
+          @click="showPreview = !showPreview"
+          label=""
+        />
+      </div>
+      <div class="col">
+        <l-e-d-preview v-if="showPreview" class="q-pb-md"/>
+      </div>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
 import { openURL } from 'quasar';
 import ConnectionStatus from 'components/ConnectionStatus';
+import LEDPreview from '../components/LEDPreview.vue';
 
 export default {
   name: 'MyLayout',
   data () {
     return {
       leftDrawerOpen: false,
+      showPreview: false,
     };
   },
   methods: {
     openURL,
   },
-  components: { ConnectionStatus },
+  components: { ConnectionStatus, LEDPreview },
 };
 </script>
 
