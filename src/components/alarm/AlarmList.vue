@@ -1,6 +1,6 @@
 <template>
   <q-pull-to-refresh @refresh="refresh">
-    <q-list bordered separator class="rounded-borders">
+    <q-list bordered separator class="row">
       <alarm-detail
         v-for="alarm in alarms"
         :key="alarm.pk"
