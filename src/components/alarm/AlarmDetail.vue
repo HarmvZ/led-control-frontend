@@ -1,5 +1,5 @@
 <template>
-  <DarkCard>
+  <q-card class="col-12 bg-grey-9 text-center q-mt-md">
     <q-parallax
       :src="img"
       :height="150"
@@ -77,18 +77,18 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-  </DarkCard>
+  </q-card>
 </template>
 
 <style>
 </style>
 
 <script>
-import DarkCard from 'components/DarkCard';
+// import DarkCard from 'components/DarkCard';
 
 export default {
   name: 'AlarmDetail',
-  components: { DarkCard },
+  // components: { DarkCard },
   props: {
     pk: Number,
     name: String,

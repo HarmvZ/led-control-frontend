@@ -1,6 +1,6 @@
 <template>
   <q-page class="items-center q-px-md">
-    <DarkCard>
+    <q-card class="col-12 bg-grey-9 text-center q-mt-md">
       <q-card-section class="bg-primary text-white">
         <div class="text-h5">Upcoming alarm</div>
       </q-card-section>
@@ -12,15 +12,15 @@
         style="margin-top: 0;"
       />
       <div v-else class="text-h6 justify-center q-pa-md">No upcoming alarms found!</div>
-    </DarkCard>
-    <DarkCard>
+    </q-card>
+    <q-card class="col-12 bg-grey-9 text-center q-mt-md">
       <q-card-section class="bg-primary text-white">
         <div class="text-h5">Change color</div>
       </q-card-section>
       <q-card-section>
         a
       </q-card-section>
-    </DarkCard>
+    </q-card>
   </q-page>
 </template>
 
@@ -28,12 +28,12 @@
 </style>
 
 <script>
-import DarkCard from 'components/DarkCard';
+// import DarkCard from 'components/DarkCard';
 import AlarmDetail from 'components/alarm/AlarmDetail';
 
 export default {
   name: 'PageIndex',
-  components: { AlarmDetail, DarkCard },
+  components: { AlarmDetail }, //, DarkCard },
   data () {
     return {
       alarm: false,
