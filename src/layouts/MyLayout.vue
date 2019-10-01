@@ -127,8 +127,8 @@ export default {
     img () {
       const randomInt = Math.floor(Math.random() * 6) + 1;
       return `statics/alarm/${randomInt}.jpg`;
-    }
-  }
+    },
+  },
 };
 </script>
 
