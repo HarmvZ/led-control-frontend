@@ -1,87 +1,94 @@
 <template>
-  <q-item class="col-12">
-    <q-item-section class="column items-center">
-      <q-item-label>
-        <q-icon
-          size="xl"
-          :color="enabled ? 'primary' : 'grey-4'" name="alarm" />
-      </q-item-label>
-      <q-item-label lines="1">
-        <span class="text-weight-medium text-h5">{{ name }}</span>
-        <q-popup-edit v-if="editable" v-model="name">
-          <q-input class="text-weight-medium text-h5" v-model="name" dense autofocus />
-        </q-popup-edit>
-      </q-item-label>
-      <q-item-label
-        @click="timeDialog = editable"
-        lines="1"
-        class="text-weight-bold text-primary text-uppercase"
-      >
-        <span class="cursor-pointer text-h3">{{ hour }}:{{ minute }}</span>
-      </q-item-label>
-      <q-item-label lines="1" class="text-center">
-        <q-toggle
-          v-model="alarm_enabled"
-          icon="alarm"
-          size="xl"
-          :disable="!editable"
-        />
-        <q-btn
-          v-if="editable"
-          @click="confirmDelete = true"
-          color="negative"
-          flat
-          size="s"
-          icon="delete"
-        />
-      </q-item-label>
+  <card>
+    <q-parallax
+      :src="img"
+      :height="150"
+      class="opacity-parallax"
+    >
+      <span class="text-h5 text-white">{{ name }}</span>
+      <q-popup-edit v-if="editable" v-model="name">
+        <q-input class=" text-h5" v-model="name" dense autofocus />
+      </q-popup-edit>
+    </q-parallax>
+    <q-card-section class="column items-center">
+      <div class="row items-center q-mb-md">
+        <q-item-label class="text-center">
+          <q-toggle
+            v-if="editable"
+            v-model="alarm_enabled"
+            icon="alarm"
+            size="xl"
+          />
+        </q-item-label>
+        <q-item-label
+          @click="timeDialog = editable"
+          lines="1"
+          class="text-weight-bold text-primary text-uppercase"
+        >
+          <span class="cursor-pointer text-h2 text-white">{{ hour }}:{{ minute }}</span>
+        </q-item-label>
+        <q-item-label class="text-center">
+          <q-btn
+            v-if="editable"
+            @click="confirmDelete = true"
+            color="grey-6"
+            flat
+            size="s"
+            icon="delete"
+          />
+        </q-item-label>
+      </div>
       <q-item-label
         caption
-        class="q-gutter-xs"
+        class="q-gutter-xs row items-center"
       >
         <q-btn
           v-for="dow in dow_map"
           :key="dow.value"
-          :clickable="editable"
+          :disabled="!editable"
           @click="toggleDow(dow.value)"
           :flat="!day_of_week.split(',').includes(dow.value)"
           :color="day_of_week.split(',').includes(dow.value) ? 'primary' : 'gray-6'"
           size="md"
           dense
+          style="color: #ccc;"
         >
           {{ dow.label }}
         </q-btn>
       </q-item-label>
-    </q-item-section>
+    </q-card-section>
     <q-dialog v-model="timeDialog">
         <q-time
           v-model="time"
           @input="timeChanged"
           format24h
+          dark
         />
     </q-dialog>
-    <q-dialog v-model="confirmDelete">
-      <q-card>
+    <q-dialog dark v-model="confirmDelete">
+      <q-card class="bg-grey-9 text-white">
         <q-card-section class="row items-center">
           <q-avatar icon="warning" color="negative" text-color="white" />
           <span class="q-ml-sm">Are you sure you want to remove "{{ name }}"?</span>
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn flat label="Cancel" color="primary" v-close-popup />
+          <q-btn flat label="Cancel" color="white" v-close-popup />
           <q-btn flat label="Ok" color="negative" v-close-popup @click="removeAlarm(pk)" />
         </q-card-actions>
       </q-card>
     </q-dialog>
-  </q-item>
+  </card>
 </template>
 
 <style>
 </style>
 
 <script>
+import Card from 'components/style/Card';
 
 export default {
   name: 'AlarmDetail',
+  components: { Card },
   props: {
     pk: Number,
     name: String,
@@ -129,6 +136,10 @@ export default {
         this.updateAlarm(this.pk, { enabled });
       },
     },
+    img () {
+      const randomInt = Math.floor(Math.random() * 6) + 1;
+      return `statics/alarm/${randomInt}.jpg`;
+    }
   },
   methods: {
     timeChanged (value) {
@@ -152,3 +163,11 @@ export default {
   },
 };
 </script>
+<style>
+.q-parallax.opacity-parallax .q-parallax__media {
+  background:#000;
+}
+.q-parallax.opacity-parallax .q-parallax__media img {
+  opacity: .2;
+}
+</style>

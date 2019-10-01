@@ -8,6 +8,8 @@
 import Vue from 'vue';
 import request from 'src/mixins/request';
 
+Vue.prototype.$appName = 'Sunrise Alarm Clock';
+
 Vue.mixin(request);
 
 export default {

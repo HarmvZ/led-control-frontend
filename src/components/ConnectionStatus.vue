@@ -1,15 +1,10 @@
 <template>
-  <q-chip
-    dense
-  >
-    <q-avatar
-      :icon="icons[status]"
-      :color="colors[status]"
-      text-color="white"
-      size="24px"
-    />
-    {{ text[status] }}
-  </q-chip>
+  <q-avatar
+    :icon="icons[status]"
+    :color="colors[status]"
+    text-color="white"
+    size="24px"
+  />
 </template>
 
 <style>

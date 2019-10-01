@@ -1,38 +1,26 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="row">
-      <q-card>
-        <q-card-section class="bg-primary text-white">
-          <div class="text-h6">Set or transition color</div>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-toggle
-          v-model="transition"
-          label="Transition"
-        />
-
-        <q-separator />
-
-        <q-card-actions align="around">
-          <SetColor
-            v-for="(color, id) of colors"
-            :key="id"
-            :red="color.r"
-            :green="color.g"
-            :blue="color.b"
-            :transition="transition"
-            class="q-ma-xs "
-          />
-        </q-card-actions>
-      </q-card>
-    </div>
-    <div class="row">
-      <q-card>
-        <ChangeColor />
-      </q-card>
-    </div>
+  <q-page class="row flex flex-center q-px-md">
+    <card>
+      <q-card-section class="bg-primary text-white">
+        <div class="text-h6">Preset colors</div>
+      </q-card-section>
+      <set-color />
+    </card>
+    <card>
+      <q-card-section class="bg-primary text-white">
+        <div class="text-h6">Custom colors</div>
+      </q-card-section>
+      <div class="row">
+        <div class="col-6 items-center">
+          <div class="text-h6">Instant</div>
+          <ChangeColor :transition="false"/>
+        </div>
+        <div class="col-6 items-center">
+          <div class="text-h6">Transition</div>
+          <ChangeColor :transition="true"/>
+        </div>
+      </div>
+    </card>
   </q-page>
 </template>
 
@@ -42,28 +30,10 @@
 <script>
 import ChangeColor from 'components/ChangeColor';
 import SetColor from 'components/SetColor';
+import Card from 'components/style/Card';
 
 export default {
   name: 'Color',
-  components: { ChangeColor, SetColor },
-  data () {
-    return {
-      transition: false,
-    };
-  },
-  computed: {
-    colors () {
-      const colors = [];
-      const c = [0, 150, 255];
-      for (const r of c) {
-        for (const g of c) {
-          for (const b of c) {
-            colors.push({ r, g, b });
-          }
-        }
-      }
-      return colors;
-    },
-  },
+  components: { ChangeColor, SetColor, Card },
 };
 </script>

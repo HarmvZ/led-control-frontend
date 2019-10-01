@@ -1,28 +1,22 @@
 <template>
-  <q-pull-to-refresh @refresh="refresh">
-    <q-list bordered separator class="row">
-      <alarm-detail
-        v-for="alarm in alarms"
-        :key="alarm.pk"
-        v-bind="alarm"
-        :updateAlarm="updateAlarm"
-        :removeAlarm="removeAlarm"
-      />
-    </q-list>
+  <div>
+    <alarm-detail
+      v-for="alarm in alarms"
+      :key="alarm.pk"
+      v-bind="alarm"
+      :updateAlarm="updateAlarm"
+      :removeAlarm="removeAlarm"
+    />
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn
+        fab
         @click="addAlarm()"
-        round
         color="primary"
         icon="alarm_add"
-        size="lg"
-        class="q-mr-md q-mb-md fixed-bottom-right"
-      >
-      </q-btn>
-  </q-pull-to-refresh>
+      />
+    </q-page-sticky>
+  </div>
 </template>
-
-<style>
-</style>
 
 <script>
 import AlarmDetail from 'components/alarm/AlarmDetail';

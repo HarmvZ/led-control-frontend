@@ -1,13 +1,13 @@
 
 const routes = [
   {
-    path: '/',
+    path: '',
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'alarm', component: () => import('pages/Alarm.vue') },
-      { path: 'color', component: () => import('pages/Color.vue') },
-      { path: 'animation', component: () => import('pages/Animation.vue') },
+      { path: 'alarms', component: () => import('pages/Alarm.vue') },
+      { path: 'colors', component: () => import('pages/Color.vue') },
+      { path: 'animations', component: () => import('pages/Animation.vue') },
     ],
   },
 ];

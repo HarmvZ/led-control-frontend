@@ -60,10 +60,15 @@ module.exports = function (ctx) {
         'QCardSection',
         'QCardActions',
         'QAvatar',
-        'QPullToRefresh',
         'QAjaxBar',
         'QChip',
         'QFooter',
+        'QFab',
+        'QPageSticky',
+        'QImg',
+        'QSeparator',
+        'QParallax',
+        'QSlideTransition',
       ],
 
       directives: [
@@ -97,18 +102,14 @@ module.exports = function (ctx) {
           },
         });
       },
-      env: ctx.dev
-        ? {
-          API_BASE_URL: JSON.stringify('http://localhost:8888/'),
-        }
-        : {
-          API_BASE_URL: JSON.stringify('http://192.168.100.112:8888/'),
-        },
+      env: {
+        API_BASE_URL: JSON.stringify(ctx.dev ? 'http://localhost:8888/' : 'http://192.168.100.112:8888/') ,
+      },
     },
 
     devServer: {
       // https: true,
-      port: 80,
+      port: 8088,
       open: false, // opens browser window automatically
     },
 

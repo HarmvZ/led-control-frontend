@@ -1,16 +1,26 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="text-h5"> Upcoming alarm</div>
-    <q-card class="row">
-      <q-card-section>
-        <AlarmDetail v-if="alarm !== false" v-bind="alarm" :editable="false" />
-        <span v-else>No upcoming alarms found!</span>
+  <q-page class="items-center q-px-md">
+    <card>
+      <q-card-section class="bg-primary text-white">
+        <div class="text-h5">Upcoming alarm</div>
       </q-card-section>
-    </q-card>
-    <q-card class="row">
-      <q-card-section>
+
+      <AlarmDetail
+        v-if="alarm !== false"
+        v-bind="alarm"
+        :editable="false"
+        style="margin-top: 0;"
+      />
+      <div v-else class="text-h6 justify-center q-pa-md">No upcoming alarms found!</div>
+    </card>
+    <card>
+      <q-card-section class="bg-primary text-white">
+        <div class="text-h5">Change color</div>
       </q-card-section>
-    </q-card>
+      <q-card-section>
+        a
+      </q-card-section>
+    </card>
   </q-page>
 </template>
 
@@ -18,11 +28,12 @@
 </style>
 
 <script>
+import Card from 'components/style/Card';
 import AlarmDetail from 'components/alarm/AlarmDetail';
 
 export default {
   name: 'PageIndex',
-  components: { AlarmDetail },
+  components: { AlarmDetail, Card },
   data () {
     return {
       alarm: false,

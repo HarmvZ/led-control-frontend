@@ -10,7 +10,7 @@ export default {
       } catch (error) {
         this.$q.notify({
           message: error.toString(),
-          position: 'bottom',
+          position: 'top',
           color: 'negative',
           icon: 'report_problem',
           actions: [{

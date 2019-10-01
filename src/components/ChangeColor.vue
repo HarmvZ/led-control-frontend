@@ -1,10 +1,6 @@
 <template>
   <div>
-    <q-color v-model="color" format-model="rgb" inline no-header></q-color>
-    <q-btn-group>
-      <q-btn color="primary" label="Set" @click="changeColor()" />
-      <q-btn color="primary" label="Transistion" @click="changeColor(transition=true)" />
-    </q-btn-group>
+    <q-color dark format-model="rgb" inline no-header @change="changeColor"></q-color>
   </div>
 </template>
 
@@ -16,19 +12,14 @@ import getRGBColorObject from 'src/utils/getRGBColorObject';
 
 export default {
   name: 'ChangeColor',
-  data () {
-    return {
-      color: null,
-    };
+  props: {
+    transition: Boolean,
   },
   methods: {
-    changeColor (transition = false) {
-      if (!this.color) {
-        return;
-      }
-      const data = getRGBColorObject(this.color);
+    changeColor (value) {
+      const data = getRGBColorObject(value);
       let url = '/api/set_color/';
-      if (transition) {
+      if (this.transition) {
         url = '/api/transition_color/';
       }
       this.request({

@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex flex-center">
-    <alarm-list class="flex flex-center" />
+  <q-page class="q-px-md">
+    <alarm-list dark />
   </q-page>
 </template>
 
