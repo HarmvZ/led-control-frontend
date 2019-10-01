@@ -84,7 +84,7 @@
 </style>
 
 <script>
-import Card from 'components/style/Card';
+import Card from 'components/functional/Card';
 
 export default {
   name: 'AlarmDetail',

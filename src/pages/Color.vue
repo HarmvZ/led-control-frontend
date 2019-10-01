@@ -30,7 +30,7 @@
 <script>
 import ChangeColor from 'components/ChangeColor';
 import SetColor from 'components/SetColor';
-import Card from 'components/style/Card';
+import Card from 'components/functional/Card';
 
 export default {
   name: 'Color',

@@ -28,7 +28,7 @@
 </style>
 
 <script>
-import Card from 'components/style/Card';
+import Card from 'components/functional/Card';
 import AlarmDetail from 'components/alarm/AlarmDetail';
 
 export default {
