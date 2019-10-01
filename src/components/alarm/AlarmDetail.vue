@@ -1,5 +1,5 @@
 <template>
-  <card>
+  <FCard>
     <q-parallax
       :src="img"
       :height="150"
@@ -77,18 +77,18 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-  </card>
+  </FCard>
 </template>
 
 <style>
 </style>
 
 <script>
-import Card from 'components/functional/Card';
+import FCard from 'components/functional/FCard';
 
 export default {
   name: 'AlarmDetail',
-  components: { Card },
+  components: { FCard },
   props: {
     pk: Number,
     name: String,

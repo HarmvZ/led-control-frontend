@@ -1,12 +1,12 @@
 <template>
   <q-page class="row flex flex-center q-px-md">
-    <card>
+    <FCard>
       <q-card-section class="bg-primary text-white">
         <div class="text-h6">Preset colors</div>
       </q-card-section>
       <set-color />
-    </card>
-    <card>
+    </FCard>
+    <FCard>
       <q-card-section class="bg-primary text-white">
         <div class="text-h6">Custom colors</div>
       </q-card-section>
@@ -20,7 +20,7 @@
           <ChangeColor :transition="true"/>
         </div>
       </div>
-    </card>
+    </FCard>
   </q-page>
 </template>
 
@@ -30,10 +30,10 @@
 <script>
 import ChangeColor from 'components/ChangeColor';
 import SetColor from 'components/SetColor';
-import Card from 'components/functional/Card';
+import FCard from 'components/functional/FCard';
 
 export default {
   name: 'Color',
-  components: { ChangeColor, SetColor, Card },
+  components: { ChangeColor, SetColor, FCard },
 };
 </script>

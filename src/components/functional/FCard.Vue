@@ -10,6 +10,6 @@
 <script>
 
 export default {
-  name: 'Card',
+  name: 'FCard',
 };
 </script>
