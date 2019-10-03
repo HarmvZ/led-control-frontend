@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <q-option-group
-      v-model="animation"
-      :options="options"
-      color="primary"
-    />
+  <div class="column">
+    <div class="q-mt-md">Speed</div>
     <q-slider
       v-model="waitMs"
       :min="1"
       :max="500"
       :step="1"
       label
+      class=""
     />
-    <q-btn-group>
-      <q-btn color="primary" label="Show Animation" @click="showAnimation()" />
-    </q-btn-group>
+    <q-btn
+      v-for="option in options"
+      :key="option.value"
+      :label="option.label"
+      @click="showAnimation(option.value)"
+      color="primary"
+      size="md"
+      class="col-12 q-mb-md q-mx-md"
+    />
   </div>
 </template>
 
@@ -46,9 +49,9 @@ export default {
     };
   },
   methods: {
-    showAnimation () {
+    showAnimation (animation) {
       const data = {
-        'animation': this.animation,
+        'animation': animation,
         'wait_ms': this.waitMs,
       };
       let url = '/api/show_animation/';
