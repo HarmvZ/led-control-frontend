@@ -45,7 +45,6 @@ export default {
           url,
         });
       } catch (err) {
-        console.log(err);
         return 2;
       }
       return 1;
