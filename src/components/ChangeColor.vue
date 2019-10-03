@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <q-color dark format-model="rgb" inline no-header @change="changeColor"></q-color>
-  </div>
+    <q-color
+      dark
+      format-model="rgb"
+      inline
+      no-header
+      @change="changeColor"
+    />
 </template>
 
 <style>
@@ -14,6 +18,8 @@ export default {
   name: 'ChangeColor',
   props: {
     transition: Boolean,
+    steps: Number,
+    timestep: Number,
   },
   methods: {
     changeColor (value) {
