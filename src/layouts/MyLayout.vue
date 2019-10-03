@@ -43,7 +43,9 @@
           :key="id"
           clickable
           v-ripple
-          :to="menuItem.route">
+          :to="menuItem.route"
+          exact
+        >
           <q-item-section avatar>
             <q-icon :name="menuItem.icon" />
           </q-item-section>
