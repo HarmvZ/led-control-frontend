@@ -1,11 +1,13 @@
 export default {
   methods: {
     async request (options) {
+      this.$q.loadingBar.start();
       try {
         const response = await this.$axios({
           baseURL: process.env.API_BASE_URL,
           ...options,
         });
+        this.$q.loadingBar.stop();
         return response.data;
       } catch (error) {
         this.$q.notify({

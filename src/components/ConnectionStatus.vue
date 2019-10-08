@@ -4,6 +4,7 @@
     :color="colors[status]"
     text-color="white"
     size="24px"
+    ref="avatar"
   />
 </template>
 
@@ -37,6 +38,7 @@ export default {
   },
   methods: {
     async checkStatus () {
+      this.$refs.avatar.$el.classList.add('spin');
       const url = '/api/status/';
       try {
         await this.$axios({
@@ -47,6 +49,8 @@ export default {
       } catch (err) {
         return 2;
       }
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      this.$refs.avatar.$el.classList.remove('spin');
       return 1;
     },
   },
@@ -61,3 +65,21 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.spin{
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+</style>

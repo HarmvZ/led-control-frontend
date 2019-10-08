@@ -79,7 +79,17 @@ module.exports = function (ctx) {
       // Quasar plugins
       plugins: [
         'Notify',
+        'LoadingBar',
       ],
+
+      config: {
+        loadingBar: {
+          color: 'accent',
+          size: '10px',
+          position: 'bottom',
+          skipHijack: true,
+        },
+      },
     },
 
     supportIE: false,
@@ -103,7 +113,7 @@ module.exports = function (ctx) {
         });
       },
       env: {
-        API_BASE_URL: JSON.stringify(ctx.dev ? 'http://localhost:8888/' : 'http://192.168.100.112:8888/') ,
+        API_BASE_URL: JSON.stringify(ctx.dev ? 'http://localhost:8888/' : 'http://192.168.100.112:8888/'),
       },
     },
 
